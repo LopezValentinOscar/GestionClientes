@@ -6,7 +6,23 @@
 <meta charset="UTF-8">
 <title>Login</title>
 </head>
-<body>
 
+<body>
+	<header>
+		<nav>
+			
+		</nav>
+	</header>
+	<main>
+	
+	</main>
+	<footer>
+		<div>
+			<img src="" alt="logo">
+		</div>
+		<div>
+			<p>Gestión Clientes | Derechos reservados © 2025</p>
+		</div>
+	</footer>
 </body>
 </html>
