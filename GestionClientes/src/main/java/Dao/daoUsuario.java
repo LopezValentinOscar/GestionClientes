@@ -15,8 +15,8 @@ public class daoUsuario {
 	
 	public usuario login(String mail, String contrasena)
 	{
-		String query = "SELECT * FROM usuarios WHERE correo_electronico = ? AND contrasena = ?";
-		usuario u = new usuario();
+		String query = "SELECT * FROM sistema_clientes.usuarios WHERE correo_electronico = ? AND contrasena = ?";
+		usuario u = null;
 		
 		try(Connection cn = DriverManager.getConnection(host, user, pass);
 			PreparedStatement ps = cn.prepareStatement(query);){
@@ -27,13 +27,16 @@ public class daoUsuario {
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
+				u = new usuario();
 				u.setId(rs.getInt("id_usuario"));
+				System.out.println("ENCONTRADO: ID = " + u.getId());
 				u.setNombre(rs.getString("usuario"));
 				u.setMail(rs.getString("correo_electronico"));
 				u.setContrasena(rs.getString("contrasena"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
+			System.out.println("NO SE ENCONTRÓ USUARIO");
 		}
 		return u;
 	}

@@ -4,6 +4,7 @@ USE sistema_clientes;
 -- Tabla de usuarios (para login)
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    correo_electronico VARCHAR(50) NOT NULL UNIQUE,
     usuario VARCHAR(50) NOT NULL UNIQUE,
     contrasena VARCHAR(255) NOT NULL
 );
@@ -26,8 +27,8 @@ CREATE TABLE clientes (
 );
 
 -- Insert usuario admin
-INSERT INTO usuarios (usuario, contrasena)
-VALUES ('admin', 'pass');
+INSERT INTO usuarios (usuario, correo_electronico, contrasena)
+VALUES ('admin', 'admin@gmail.com', 'pass');
 
 
 INSERT INTO clientes (

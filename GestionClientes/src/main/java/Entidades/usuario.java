@@ -4,7 +4,7 @@ public class usuario {
 	
 	private int id;
 	private String nombre;
-	private String mail;
+	private String correo_electronico;
 	private String contrasena;
 	
 	public usuario(){}
@@ -28,10 +28,10 @@ public class usuario {
 		this.nombre = nombre;
 	}
 	public String getMail() {
-		return mail;
+		return correo_electronico;
 	}
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setMail(String correo_electronico) {
+		this.correo_electronico = correo_electronico;
 	}
 	public String getContrasena() {
 		return contrasena;
