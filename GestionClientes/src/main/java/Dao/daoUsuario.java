@@ -15,6 +15,13 @@ public class daoUsuario {
 	
 	public usuario login(String mail, String contrasena)
 	{
+		
+		try {
+    		Class.forName("com.mysql.jdbc.Driver");
+    	}catch(ClassNotFoundException e){
+    		e.printStackTrace();
+    	}
+		
 		String query = "SELECT * FROM sistema_clientes.usuarios WHERE correo_electronico = ? AND contrasena = ?";
 		usuario u = null;
 		

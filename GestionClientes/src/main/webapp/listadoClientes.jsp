@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% usuario u = (usuario) request.getAttribute("usuario");%>
-	<label><%= u.getNombre()%></label>
+	<% usuario u = (usuario) session.getAttribute("usuario");
+	   String msj = u.getNombre();%>
+	<label><%= msj%></label>
 </body>
 </html>
