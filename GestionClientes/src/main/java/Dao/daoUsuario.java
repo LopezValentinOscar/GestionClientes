@@ -36,7 +36,6 @@ public class daoUsuario {
 			if (rs.next()) {
 				u = new usuario();
 				u.setId(rs.getInt("id_usuario"));
-				System.out.println("ENCONTRADO: ID = " + u.getId());
 				u.setNombre(rs.getString("usuario"));
 				u.setMail(rs.getString("correo_electronico"));
 				u.setContrasena(rs.getString("contrasena"));

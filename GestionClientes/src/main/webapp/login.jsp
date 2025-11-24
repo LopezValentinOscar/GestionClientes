@@ -28,6 +28,9 @@
 			<input type="password" id="txtContra" name="txtContra">
 			<button type="submit" id="login" name="login">Ingresar</button>
 		</form>
+		<div>
+			<label><%= request.getAttribute("mensaje_error") %></label>
+		</div>
 	</main>
 	<footer>
 		<div>
