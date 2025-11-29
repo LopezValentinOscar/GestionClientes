@@ -6,11 +6,13 @@
 <meta charset="UTF-8">
 <title>Login</title>
 <meta name="GestionCliente">
+<link rel="stylesheet" href="css/LoginStyles.css">
 </head>
 
 <body>
+<div class="contenedor">
 	<header>
-		<img src="" alt="logo">
+		<img src="" alt="logo">	
 		<nav>
 			<ul>
 				<li><a href="login.jsp">Login</a></li>
@@ -40,5 +42,6 @@
 			<p>Gestión Clientes | Derechos reservados © 2025</p>
 		</div>
 	</footer>
+</div>
 </body>
 </html>

@@ -8,25 +8,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/ListadoStyles.css">
 </head>
 	
 
 	
 <body>
+<div class="contenedor">
 	<header>
 		<img src="" alt="logo">
 		<nav>
 			<ul>
-				<li><a href="login.jsp">Login</a></li>
-				<li><a href="https://www.tiktok.com/@valuckyyy">Tik Tok</a></li>
-				<li><a href="https://www.instagram.com/simply_val._/">Instagram</a></li>
-				<li><a href="">Mail</a></li>
+				<il><a href="login.jsp">Login</a></il>
+				<il><a href="https://www.tiktok.com/@valuckyyy">Tik Tok</a></il>
+				<il><a href="https://www.instagram.com/simply_val._/">Instagram</a></il>
+				<il><a href="">Mail</a></il>
 			</ul>
 		</nav>
 
 	</header>
+	<aside>
+			<ul>
+				<li><a href="listadoClientes.jsp">Listado de Clientes</a></li>
+				<li><a href="añadirCliente.jsp">Añadir Cliente</a></li>
+				<li><a href="">Próximamente</a></li>
+			</ul>
+	</aside>
 	<main>
-		<div>
+		
+		<div class="main">
 			<%
 				ArrayList<cliente> listaC = null;
 				if(request.getAttribute("listaClientes")==null){
@@ -70,12 +80,13 @@
 		</div>
 	</main>
 	<footer>
-		<div>
+		<div class="footer-izq">
 			<img src="" alt="logo">
 		</div>
-		<div>
+		<div class="footer-der">
 			<p>Gestión Clientes | Derechos reservados © 2025</p>
 		</div>
 	</footer>
+</div>
 </body>
 </html>

@@ -1,0 +1,170 @@
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+
+*, *::before, *::after{
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Segeo UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #f4f7f6;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto; 
+    grid-template-areas:
+    "header header"
+	"sidebar main"
+	"footer footer";
+	min-height: 100vh;
+}
+
+header {
+	grid-area: header;
+    background-color: #554be9;
+    color: white;
+    padding: 1.5rem 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+aside{
+	grid-area: sidebar;
+	background-color: #ffffff;
+	padding: 2rem;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+	transition: width 0.3s ease;
+}
+
+main {
+	grid-area: main;
+	background-color: #f4f7f6;
+	padding: 3rem;
+}
+
+footer {
+	grid-area: footer;
+    background-color: #3f51b5;
+    color: white;
+    padding: 1.5rem 3rem;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+.main {
+	padding: 2rem;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0, 10px, 20px rgba(0, 0, 0 ,0.19), 0,6px 6px rgba(0, 0, 0, 0.23);
+	transition: all 0.3 ease-in-out;
+}
+
+.main:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+nav ul, aside ul {
+	list-style: none;
+	display: flex;
+	gap: 20px;
+	padding: 0;
+	margin: 0;
+}
+
+header nav ul {
+	justify-content: space-between;
+}
+
+header a, aside a {
+	text-decoration: none;
+	color: inherit;
+	font-weight: 600;
+	padding: 0.5rem 1rem;
+	transition: color 0.3s, background-color 0.3s, transform 0.3s;
+	font-size: 1.5rem;
+	border-radius: 4px;
+	display: block;
+}
+
+header a:hover {
+	color: #ffd54f;
+	transform: translateY(-2px);
+}
+
+aside ul {
+	flex-direction: column;
+	gap: 1rem;
+}
+
+aside a {
+	color: #3f51b5;
+}
+
+aside a:hover {
+	background-color: #e8eaf6;
+	color: #1a237e;
+	transform: translateX(5px);
+}
+
+.footer-der p {
+	margin: 0;
+	opacity: 0.8;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 2rem;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	background-color: white;
+	font-size: 1.4rem;
+}
+
+th, td {
+	padding: 1.2rem;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+thead th {
+	background-color: #3f51b5;
+	color: white;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+tbody tr:hover {
+	background-color: #f0f0f0;
+	transition: background-color 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
