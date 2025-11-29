@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class cliente {
 	
-	private int id_cliente;
-	private int dni;
-	private int cuil;
+	private String id_cliente;
+	private String dni;
+	private String cuil;
 	private String nombre;
 	private String apellido;
 	private String sexo;
@@ -16,13 +16,13 @@ public class cliente {
 	private String localidad;
 	private String provincia;
 	private String correo_electronico;
-	private int telefono;
+	private String telefono;
 	
 	public cliente() {}
 	
-	public cliente(int id_cliente, int dni, int cuil, String nombre, String apellido, String sexo,
+	public cliente(String id_cliente, String dni, String cuil, String nombre, String apellido, String sexo,
 			LocalDate fecha_nacimiento, String direccion, String nacionalidad, String localidad, String provincia,
-			String correo_electronico) {
+			String correo_electronico, String telefono) {
 		this.id_cliente = id_cliente;
 		this.dni = dni;
 		this.nombre = nombre;
@@ -34,29 +34,30 @@ public class cliente {
 		this.localidad = localidad;
 		this.provincia = provincia;
 		this.correo_electronico = correo_electronico;
+		this.telefono = telefono;
 	}
 
-	public int getId_cliente() {
+	public String getId_cliente() {
 		return id_cliente;
 	}
 
-	public void setId_cliente(int id_cliente) {
+	public void setId_cliente(String id_cliente) {
 		this.id_cliente = id_cliente;
 	}
 
-	public int getDni() {
+	public String obtenerDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
-	public int getCuil() {
+	public String getCuil() {
 		return cuil;
 	}
 
-	public void setCuil(int cuil) {
+	public void setCuil(String cuil) {
 		this.cuil = cuil;
 	}
 
@@ -132,11 +133,11 @@ public class cliente {
 		this.correo_electronico = correo_electronico;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 }

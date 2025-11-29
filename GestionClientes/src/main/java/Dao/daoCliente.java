@@ -12,33 +12,31 @@ import Entidades.cliente;
 
 public class daoCliente {
 	
-	private String host= "jdbc:mysql://localhost:3306/sistema_clientes";
+	// En daoCliente.java, en la declaración de host:
+	private String host= "jdbc:mysql://localhost:3306/sistema_clientes?useSSL=false"; // Añadir ?useSSL=false
 	private String user= "root";
 	private String pass= "root";
 	
-	private void sql() {
+	public ArrayList<cliente> listaClientes(){
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 		}
-	}
-	
-	public ArrayList<cliente> listaClientes(){
-		
-		sql();
+
 		
 		String query = "SELECT * FROM clientes";
 		ArrayList<cliente> listaC = new ArrayList<cliente>();
 		
-		try(Connection cn = DriverManager.getConnection(host, user, pass);
-			Statement st = cn.createStatement();
-			ResultSet rs = st.executeQuery(query)){
-			
+		try (Connection cn = DriverManager.getConnection(host, user, pass);
+			 Statement st = cn.createStatement();
+			 ResultSet rs = st.executeQuery(query)){
+		
 			while(rs.next()) {
 				cliente c = new cliente();
-				c.setDni(rs.getInt("dni"));
-	            c.setCuil(rs.getInt("cuil"));
+				c.setDni(rs.getString("dni"));
+	            c.setCuil(rs.getString("cuil"));
 	            c.setNombre(rs.getString("nombre"));
 	            c.setApellido(rs.getString("apellido"));
 	            c.setSexo(rs.getString("sexo"));
@@ -48,13 +46,14 @@ public class daoCliente {
 	            c.setLocalidad(rs.getString("localidad"));
 	            c.setProvincia(rs.getString("provincia"));
 	            c.setCorreo_electronico(rs.getString("correo_electronico"));
-	            c.setTelefono(rs.getInt("telefono"));
+	            c.setTelefono(rs.getString("telefono"));
 	            
 	            listaC.add(c);
 			}
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
+			System.out.println("Ocurrió un error al conseguir los clientes");
 		}
 		
 		return listaC;

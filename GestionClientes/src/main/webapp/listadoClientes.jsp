@@ -1,6 +1,8 @@
 <%@ page import="Entidades.usuario" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Entidades.cliente" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 	
-	<% usuario u = (usuario) session.getAttribute("usuario");%>
+
 	
 <body>
 	<header>
@@ -21,10 +23,19 @@
 				<li><a href="">Mail</a></li>
 			</ul>
 		</nav>
-		<label>Usuario ingresado: <%= u.getNombre()%></label>
+
 	</header>
 	<main>
 		<div>
+			<%
+				ArrayList<cliente> listaC = null;
+				if(request.getAttribute("listaClientes")==null){
+					response.sendRedirect("servletClientes?action=listar");
+				} else {
+					listaC = (ArrayList<cliente>) request.getAttribute("listaClientes");
+				}
+			%>
+			
 			<table>
 				<thead>
 				<tr>
@@ -40,7 +51,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                
+                	<%if(listaC != null) {
+                		for(cliente c : listaC) {%>
+					 <tr>
+                        <td><%= c.obtenerDni() %></td>
+                        <td><%= c.getCuil() %></td>
+                        <td><%= c.getNombre() + " " + c.getApellido() %></td>
+                        <td><%= c.getSexo() %></td>
+                        <td><%= c.getFecha_nacimiento().toString() %></td>
+                        <td><%= c.getDireccion() %></td>
+                        <td><%= c.getNacionalidad() %></td>
+                        <td><%= c.getLocalidad() %></td>
+                        <td><%= c.getProvincia() %></td>
+                    </tr>
+                    <%} } %>
                 </tbody>
 			</table>
 		</div>
