@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="css/LoginStyles.css">
 </head>
 
+
+
 <body>
 <div class="contenedor">
 	<header>
@@ -25,14 +27,18 @@
 	<main>
 		<form action="${pageContext.request.contextPath}/servletUsuarios" method="post">
 			<label for="txtMail">Ingrese el mail</label>
-			<input type="email" id="txtMail" name="txtMail">
+			<input type="email" id="txtMail" name="txtMail" required>
 			<label for="txtContra">Ingrese la contraseña</label>
-			<input type="password" id="txtContra" name="txtContra">
+			<input type="password" id="txtContra" name="txtContra" required>
 			<button type="submit" id="login" name="login">Ingresar</button>
+			
+			<% String msj = "";
+			if (request.getAttribute("mensaje_error")!=null) { 
+				msj = ((String) request.getAttribute("mensaje_error"));
+			} 	
+			%>
+			<p><%= msj %></p>
 		</form>
-		<div>
-			<label><%= request.getAttribute("mensaje_error") %></label>
-		</div>
 	</main>
 	<footer>
 		<div>

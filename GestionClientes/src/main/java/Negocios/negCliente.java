@@ -12,4 +12,9 @@ public class negCliente {
 	{
 		return dc.listaClientes();
 	}
+	
+	public int añadirCliente(cliente cliente)
+	{
+		return dc.añadirCliente(cliente);
+	}
 }

@@ -2,6 +2,7 @@ package Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -59,4 +60,39 @@ public class daoCliente {
 		return listaC;
 	}
 	
+	public int añadirCliente(cliente cliente) {
+		
+		try {
+    		Class.forName("com.mysql.jdbc.Driver");
+    	}catch(ClassNotFoundException e){
+    		e.printStackTrace();
+    	}
+		
+		int filas = 0;
+		String query = "INSERT INTO clientes (dni, cuil, nombre, apellido, sexo, fecha_nacimiento, direccion, nacionalidad, localidad, provincia, correo_electronico, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try(Connection cn = DriverManager.getConnection(host, user, pass);
+			PreparedStatement ps = cn.prepareStatement(query);){
+			
+			ps.setString(1, cliente.obtenerDni());
+	        ps.setString(2, cliente.getCuil());     
+	        ps.setString(3, cliente.getNombre());	        
+	        ps.setString(4, cliente.getApellido());	        
+	        ps.setString(5, cliente.getSexo());	        
+	        ps.setString(6, cliente.getFecha_nacimiento().toString());
+	        ps.setString(7, cliente.getDireccion());
+	        ps.setString(8, cliente.getNacionalidad());
+	        ps.setString(9, cliente.getLocalidad());
+	        ps.setString(10, cliente.getProvincia());
+	        ps.setString(11, cliente.getCorreo_electronico());
+	        ps.setString(12, cliente.getTelefono());
+			
+	        filas = ps.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			filas=-1;
+		}
+		
+		return filas;
+	}
 }

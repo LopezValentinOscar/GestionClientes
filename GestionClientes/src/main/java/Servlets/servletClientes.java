@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -38,7 +39,49 @@ public class servletClientes extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		String action = request.getParameter("action");
+		
+		if (action == null) action = "";
+		
+		if (action.equalsIgnoreCase("insertar")) {
+			cliente c = new cliente();
+			
+			try {
+				c.setDni(request.getParameter("dni"));
+                c.setCuil(request.getParameter("cuil"));
+                c.setNombre(request.getParameter("nombre"));
+                c.setApellido(request.getParameter("apellido"));
+                c.setSexo(request.getParameter("sexo"));
+                c.setFecha_nacimiento(LocalDate.parse(request.getParameter("fechaNacimiento")));
+                c.setDireccion(request.getParameter("direccion"));
+                c.setNacionalidad(request.getParameter("nacionalidad"));
+                c.setLocalidad(request.getParameter("localidad"));
+                c.setProvincia(request.getParameter("provincia"));
+                c.setCorreo_electronico(request.getParameter("correo"));
+                c.setTelefono(request.getParameter("telefono"));
+                
+                int filas = nc.añadirCliente(c);
+                
+                if (filas > 0) {
+                	request.setAttribute("mensajeExito", "Cliente agregado exitosamente.");
+                } else {
+                	request.setAttribute("mensajeError", "No se pudo cargar el cliente.");
+                }
+                
+			} catch (java.time.format.DateTimeParseException e) {
+			    e.printStackTrace();
+			    request.setAttribute("mensajeError", "Error: Formato de fecha de nacimiento incorrecto (use AAAA-MM-DD).");
+			}
+			 catch (Exception e) {
+				e.printStackTrace();
+				request.setAttribute("mensajeError", "Error al procesar la solicitud.");
+			}
+			
+			ArrayList<cliente> listaC = nc.listaClientes();
+			request.setAttribute("listaClientes", listaC);
+			RequestDispatcher rd = request.getRequestDispatcher("/añadirCliente.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 }

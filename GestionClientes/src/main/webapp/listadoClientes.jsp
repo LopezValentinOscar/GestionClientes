@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Listado de Clientes</title>
 <link rel="stylesheet" href="css/ListadoStyles.css">
 </head>
 	
@@ -19,10 +19,10 @@
 		<img src="" alt="logo">
 		<nav>
 			<ul>
-				<il><a href="login.jsp">Login</a></il>
-				<il><a href="https://www.tiktok.com/@valuckyyy">Tik Tok</a></il>
-				<il><a href="https://www.instagram.com/simply_val._/">Instagram</a></il>
-				<il><a href="">Mail</a></il>
+				<li><a href="login.jsp">Cerrar Sesión</a></li>
+				<li><a href="https://www.tiktok.com/@valuckyyy">Tik Tok</a></li>
+				<li><a href="https://www.instagram.com/simply_val._/">Instagram</a></li>
+				<li><a href="">Mail</a></li>
 			</ul>
 		</nav>
 
