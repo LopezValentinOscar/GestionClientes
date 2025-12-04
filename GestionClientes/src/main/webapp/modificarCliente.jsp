@@ -25,7 +25,7 @@
 			<ul>
 				<li><a href="listadoClientes.jsp">Listado de Clientes</a></li>
 				<li><a href="añadirCliente.jsp">Añadir Cliente</a></li>
-				<li><a href="">Próximamente</a></li>
+				<li><a href="modificarCliente.jsp">Modificar Cliente</a></li>
 			</ul>
 		</aside>
 		
