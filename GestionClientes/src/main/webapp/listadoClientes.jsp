@@ -58,6 +58,8 @@
                     <th>Nacionalidad</th>
                     <th>Localidad</th>
                     <th>Provincia</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,6 +75,8 @@
                         <td><%= c.getNacionalidad() %></td>
                         <td><%= c.getLocalidad() %></td>
                         <td><%= c.getProvincia() %></td>
+                        <td><%= c.getCorreo_electronico() %></td>
+                        <td><%= c.getTelefono() %></td>
                     </tr>
                     <%} } %>
                 </tbody>

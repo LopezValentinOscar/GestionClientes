@@ -17,4 +17,9 @@ public class negCliente {
 	{
 		return dc.añadirCliente(cliente);
 	}
+	
+	public int modificarCliente(cliente cliente)
+	{
+		return dc.modificarCliente(cliente);
+	}
 }

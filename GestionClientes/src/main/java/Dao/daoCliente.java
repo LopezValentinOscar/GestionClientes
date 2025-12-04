@@ -95,4 +95,40 @@ public class daoCliente {
 		
 		return filas;
 	}
+	
+	public int modificarCliente(cliente cliente) {
+		
+		try {
+    		Class.forName("com.mysql.jdbc.Driver");
+    	}catch(ClassNotFoundException e){
+    		e.printStackTrace();
+    	}
+		
+		int filas = 0;
+		String query = "UPDATE clientes SET cuil = ?, nombre = ?, apellido = ?, sexo = ?, fecha_nacimiento = ?, direccion = ?, nacionalidad = ?, localidad = ?, provincia = ?, correo_electronico = ?, telefono = ? WHERE dni = ?";
+		
+		try(Connection cn = DriverManager.getConnection(host, user, user);
+			PreparedStatement ps = cn.prepareStatement(query);) {
+			
+			ps.setString(1, cliente.getCuil());
+	        ps.setString(2, cliente.getNombre());	        
+	        ps.setString(3, cliente.getApellido());	        
+	        ps.setString(4, cliente.getSexo());	        
+	        ps.setString(5, cliente.getFecha_nacimiento().toString());
+	        ps.setString(6, cliente.getDireccion());
+	        ps.setString(7, cliente.getNacionalidad());
+	        ps.setString(8, cliente.getLocalidad());
+	        ps.setString(9, cliente.getProvincia());
+	        ps.setString(10, cliente.getCorreo_electronico());
+	        ps.setString(11, cliente.getTelefono());	
+	        
+	        ps.setString(12, cliente.obtenerDni());
+	        
+	        filas = ps.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+			filas=-1;
+		}
+		return filas;
+	}
 }

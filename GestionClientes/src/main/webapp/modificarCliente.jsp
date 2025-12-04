@@ -53,25 +53,25 @@
 	                </select>
 	    
 	                <label for="nacionalidad">Nacionalidad</label>
-	                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad">
+	                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" required>
 	     
 	                <label for="fechaNacimiento">Fecha de nacimiento *</label>
 	                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
 
 	                <label for="direccion">Dirección</label>
-	                <input type="text" class="form-control" id="direccion" name="direccion">
+	                <input type="text" class="form-control" id="direccion" name="direccion" required>
 	   
 	                <label for="localidad">Localidad</label>
-	                <input type="text" class="form-control" id="localidad" name="localidad">
+	                <input type="text" class="form-control" id="localidad" name="localidad" required>
 
 	                <label for="provincia">Provincia</label>
-	                <input type="text" class="form-control" id="provincia" name="provincia">
+	                <input type="text" class="form-control" id="provincia" name="provincia" required>
 	   
 	                <label for="correo">Correo electrónico *</label>
 	                <input type="email" class="form-control" id="correo" name="correo" placeholder="Ej: nombre@dominio.com" required>
 
 	                <label for="telefono">Teléfono</label>
-	                <input type="text" class="form-control" id="telefono" name="telefono">
+	                <input type="number" class="form-control" id="telefono" name="telefono" required>
 	
 	                <button type="submit">Guardar cliente</button>
 	  
