@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Entidades.cliente;
 import Negocios.negCliente;
+import Service.EmailService;
+
 
 @WebServlet("/servletClientes")
 public class servletClientes extends HttpServlet {
@@ -137,6 +139,19 @@ public class servletClientes extends HttpServlet {
 		        
 		        if (filasAfectadas > 0) {
 		            request.setAttribute(msjName2, "Cliente con DNI " + dniCliente + " eliminado exitosamente.");
+		            
+		            String destinatario = "lopezvalentinoscar@gmail.com";
+		            String asunto = "Notificación: Cliente Eliminado";
+		            String cuerpo = "Se ha eliminado de la base de datos al cliente con DNI: " + dniCliente;
+		            
+		            new Thread(() -> {
+		            	try {
+		            		EmailService emailService = new EmailService();
+		            		emailService.enviar(destinatario, asunto, cuerpo);
+		            	} catch (Exception e) {
+		            		System.err.println("Error al enviar la notificación: " + e.getMessage());
+		            	}
+		            }).start();
 		        } else {
 		            request.setAttribute(msjName, "Error: No se pudo eliminar el cliente con DNI " + dniCliente + ". Puede que no exista.");
 		        }
