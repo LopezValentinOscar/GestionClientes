@@ -31,15 +31,18 @@ public class servletClientes extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		 String action = request.getParameter("action");
-
-	        if (action == null) {
-	            action = "listar";
+		 
+	        if ("listar".equals(action)) {
+		        ArrayList<cliente> lista = nc.listaClientes();
+		        request.setAttribute("listaClientes", lista);
+		        RequestDispatcher rd = request.getRequestDispatcher("/listadoClientes.jsp");
+		        rd.forward(request, response);
+	        } else if ("listar2".equals(action)) {
+	        	ArrayList<cliente> lista = nc.listaClientes();
+	        	request.setAttribute("listaClientes", lista);
+	        	RequestDispatcher rd = request.getRequestDispatcher("/eliminarCliente.jsp");
+	        	rd.forward(request, response);
 	        }
-	        
-	        ArrayList<cliente> lista = nc.listaClientes();
-	        request.setAttribute("listaClientes", lista);
-	        RequestDispatcher rd = request.getRequestDispatcher("/listadoClientes.jsp");
-	        rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -123,6 +126,29 @@ public class servletClientes extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("modificarCliente.jsp");
 			rd.forward(request, response);
+			
+		} else if (action.equalsIgnoreCase("eliminar")) {
+		    
+		    String dniCliente = request.getParameter("txtDni");
+		    
+		    if (dniCliente != null && !dniCliente.isEmpty()) {
+		        
+		        int filasAfectadas = nc.eliminarCliente(dniCliente);
+		        
+		        if (filasAfectadas > 0) {
+		            request.setAttribute(msjName2, "Cliente con DNI " + dniCliente + " eliminado exitosamente.");
+		        } else {
+		            request.setAttribute(msjName, "Error: No se pudo eliminar el cliente con DNI " + dniCliente + ". Puede que no exista.");
+		        }
+		    } else {
+		        request.setAttribute(msjName, "Error: DNI de cliente no proporcionado.");
+		    }
+
+		    
+		    ArrayList<cliente> lista = nc.listaClientes();
+		    request.setAttribute("listaClientes", lista);
+		    RequestDispatcher rd = request.getRequestDispatcher("/eliminarCliente.jsp");
+		    rd.forward(request, response);
 		}
 	}
 

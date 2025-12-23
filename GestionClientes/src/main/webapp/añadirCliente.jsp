@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Añadir Cliente</title>
+<title>GESTION CLIENTE</title>
 <link rel="stylesheet" href="css/AñadirStyles.css">
 </head>
 <body>
@@ -26,6 +26,7 @@
 				<li><a href="listadoClientes.jsp">Listado de Clientes</a></li>
 				<li><a href="añadirCliente.jsp">Añadir Cliente</a></li>
 				<li><a href="modificarCliente.jsp">Modificar Cliente</a></li>
+				<li><a href="eliminarCliente.jsp">Eliminar Cliente</a></li>
 			</ul>
 	</aside>
 	<main>

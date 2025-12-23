@@ -107,7 +107,7 @@ public class daoCliente {
 		int filas = 0;
 		String query = "UPDATE clientes SET cuil = ?, nombre = ?, apellido = ?, sexo = ?, fecha_nacimiento = ?, direccion = ?, nacionalidad = ?, localidad = ?, provincia = ?, correo_electronico = ?, telefono = ? WHERE dni = ?";
 		
-		try(Connection cn = DriverManager.getConnection(host, user, user);
+		try(Connection cn = DriverManager.getConnection(host, user, pass);
 			PreparedStatement ps = cn.prepareStatement(query);) {
 			
 			ps.setString(1, cliente.getCuil());
@@ -131,4 +131,44 @@ public class daoCliente {
 		}
 		return filas;
 	}
+	
+	public int eliminarCliente(String dni) {
+		
+		try {
+    		Class.forName("com.mysql.jdbc.Driver");
+    	}catch(ClassNotFoundException e){
+    		e.printStackTrace();
+    	}
+		
+		int filas = 0;
+		String query = "DELETE FROM clientes WHERE dni = ?";
+		
+		try(Connection cn = DriverManager.getConnection(host, user, pass);
+			PreparedStatement ps = cn.prepareStatement(query);) {
+			
+			ps.setString(1, dni.trim());
+			
+			filas = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			filas=-1;
+		}
+		return filas;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

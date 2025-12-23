@@ -22,4 +22,8 @@ public class negCliente {
 	{
 		return dc.modificarCliente(cliente);
 	}
+	
+	public int eliminarCliente(String dni) {
+	    return dc.eliminarCliente(dni);
+	}
 }
